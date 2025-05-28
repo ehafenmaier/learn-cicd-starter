@@ -24,10 +24,6 @@ type apiConfig struct {
 //go:embed static/*
 var staticFiles embed.FS
 
-func unused() {
-	// This function is intentionally left empty to avoid unused import errors.
-	// It can be used to hold any future code that might be needed.
-}
 
 func main() {
 	err := godotenv.Load(".env")
