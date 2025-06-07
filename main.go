@@ -3,13 +3,14 @@ package main
 import (
 	"database/sql"
 	"embed"
+	"github.com/go-chi/cors"
 	"io"
 	"log"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/go-chi/chi"
-	"github.com/go-chi/cors"
 	"github.com/joho/godotenv"
 
 	"github.com/bootdotdev/learn-cicd-starter/internal/database"
@@ -89,9 +90,10 @@ func main() {
 
 	router.Mount("/v1", v1Router)
 	srv := &http.Server{
-		Addr:        ":" + port,
-		Handler:     router,
-		ReadTimeout: 10 * 60, // 10 minutes
+		Addr:         ":" + port,
+		Handler:      router,
+		ReadTimeout:  60 * time.Second,
+		WriteTimeout: 60 * time.Second,
 	}
 
 	log.Printf("Serving on port: %s\n", port)
