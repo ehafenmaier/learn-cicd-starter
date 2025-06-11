@@ -29,8 +29,8 @@ jobs:
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
 
-      - name: Use gcloud CLI
-        run: gcloud inf
+      - name: Get gcloud CLI information
+        run: gcloud info
 
       - name: Build annd push Docker image
         run: >
